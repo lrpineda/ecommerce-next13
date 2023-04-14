@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import { useCartStore } from '@/store';
 import formatPrice from '@/utils/PriceFormat';
+import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5';
+import basket from '@/public/basket.png';
+
 
 export default function Cart() {
     const cartStore = useCartStore();
@@ -16,13 +19,43 @@ export default function Cart() {
                         <Image className='rounded-m h-24' src={item.image} alt={item.name} width={120} height={120} />
                         <div>
                             <h2>{item.name}</h2>
-                            <h2>Quantity: {item.quantity}</h2>
-                            <p>Price: {formatPrice(item.unit_amount)}</p>
+                            <div className='flex gap-2'>
+                                <h2>Quantity: {item.quantity}</h2>
+                                <button 
+                                    onClick={() => cartStore.removeProduct({
+                                        id: item.id,
+                                        image: item.image,
+                                        name: item.name,
+                                        unit_amount: item.unit_amount,
+                                    })}>
+                                    <IoRemoveCircle/>
+                                </button>
+                                <button 
+                                    onClick={() => cartStore.addProduct({
+                                        id: item.id,
+                                        image: item.image,
+                                        name: item.name,
+                                        unit_amount: item.unit_amount,
+                                    })}>
+                                    <IoAddCircle/>
+                                </button>
+
+                            </div>
+                            <p className='text-sm'>Price: {formatPrice(item.unit_amount)}</p>
+                            
                         </div>
                         
                     </div>
                 ))}
-                <button className='py-2 mt-4 bg-teal-700 w-full rounded-md text-white'>Checkout</button>
+                {cartStore.cart.length > 0 && (
+                     <button className='py-2 mt-4 bg-teal-700 w-full rounded-md text-white'>Checkout</button>
+                )}
+                {!cartStore.cart.length && (
+                    <div className='flex flex-col items-center gap-12 text-2xl font-medium pt-56 opacity-75'>
+                        <h1>Oh no! It's empty 😢</h1>
+                        <Image src={basket} alt='empty cart' width={200} height={200} />
+                    </div>
+                )}
             </div>
         </div>
     )
