@@ -43,6 +43,7 @@ export default function Nav({ user }: Session) {
           </li>
         )}
         {user && (
+          <Link href={"/dashboard"}>
           <li>
             <Image
               className="rounded-full"
@@ -52,6 +53,7 @@ export default function Nav({ user }: Session) {
               height={36}
             />
           </li>
+          </Link>
         )}
       </ul>
       <AnimatePresence>
