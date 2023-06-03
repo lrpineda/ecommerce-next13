@@ -17,6 +17,7 @@ export default function AddCart({
   const handleAddToCart = () => {
     cartStore.addProduct({ id, image, name, unit_amount, quantity })
     setAdded(true);
+    console.log(id, image, name, unit_amount, quantity)
     setTimeout(() => {
       setAdded(false);
     }, 500)
