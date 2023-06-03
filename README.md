@@ -22,7 +22,9 @@ The following application was part of a instructional course on NextJS 13. The c
 - Stripe
 
 ## Usage
-In progress
+The goal of this project was to learn NextJS 13 and how to use it to build a full stack application. The application is a simple e-commerce app that allows users to add items to a cart and checkout using Stripe. The application also has a login and signup feature that uses Auth0. The application also uses Prisma to connect to a Postgres database.
+
+Feel free to test all the way to checkout, but please do not use real credit card information.
 
 ## License
 Copyright (c) lrpineda. All rights reserved.
