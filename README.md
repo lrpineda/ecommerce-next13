@@ -21,6 +21,8 @@ The following application was part of a instructional course on NextJS 13. The c
 - AuthJs
 - Stripe
 - DaisyUI
+- Framer Motion
+- Zustand
 
 
 ## Usage
