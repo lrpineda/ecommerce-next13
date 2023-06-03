@@ -23,7 +23,12 @@ export default async function Product({searchParams}: SearchParamTypes) {
             <div className="flex gap-2">
                 <p className="font-bold text-primary">{formatPrice(searchParams.unit_amount)}</p>
             </div>
-            <AddCart {...searchParams} />
+            <AddCart 
+                id={searchParams.id}
+                name={searchParams.name}
+                unit_amount={searchParams.unit_amount}
+                image={searchParams.image}
+            />
             </div>
         </div>
     )
