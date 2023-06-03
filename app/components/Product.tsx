@@ -16,7 +16,7 @@ export default function Product({
     <Link
       href={{
         pathname: `/product/${id}`,
-        query: { name, image, unit_amount, id, description, features },
+        query: { name, image, unit_amount, id , description, features },
       }}
     >
       <div>
@@ -30,7 +30,6 @@ export default function Product({
         />
         <div className="font-medium py-2">
           <h1>{name}</h1>
-          <span>{id}</span>
           <h2 className="text-sm text-primary">{formatPrice(unit_amount)}</h2>
         </div>
       </div>
