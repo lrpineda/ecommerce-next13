@@ -19,17 +19,18 @@ export default function Product({
         query: { name, image, unit_amount, id, description, features },
       }}
     >
-      <div className="text-gray-700">
+      <div>
         <Image
           className="w-full h-96 object-cover rounded-lg"
           src={image}
           alt={name}
           width={800}
           height={800}
+          priority={true}
         />
         <div className="font-medium py-2">
           <h1>{name}</h1>
-          <h2 className="text-sm text-teal-700">{formatPrice(unit_amount)}</h2>
+          <h2 className="text-sm text-primary">{formatPrice(unit_amount)}</h2>
         </div>
       </div>
     </Link>
