@@ -6,13 +6,14 @@ import { useCartStore } from "@/store"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import CheckoutForm from "./CheckoutForm"
-
+import OrderAnimation from "./OrderAnimation"
+import { motion } from "framer-motion"
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
 export default function Checkout() {
     const cartStore = useCartStore();
     const router = useRouter();
-    const [clientSecret, setClientSecret] = useState<string | null>(null);
+    const [clientSecret, setClientSecret] = useState<string>("");
 
     useEffect(() => {
         fetch('/api/create-payment-intent', {
@@ -45,12 +46,16 @@ export default function Checkout() {
 
     return (
         <div>
+            {!clientSecret && <OrderAnimation/>}
             {clientSecret && (
-                <div>
+                <motion.div
+                    initial={{ opacity: 0}}
+                    animate={{ opacity: 1}}
+                >
                     <Elements options={options} stripe={stripePromise}>
                        <CheckoutForm clientSecret={clientSecret}/>
                     </Elements>
-                </div>
+                </motion.div>
             )}
         </div>
     )
