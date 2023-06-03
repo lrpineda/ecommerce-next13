@@ -30,6 +30,7 @@ export default function Product({
         />
         <div className="font-medium py-2">
           <h1>{name}</h1>
+          <span>{id}</span>
           <h2 className="text-sm text-primary">{formatPrice(unit_amount)}</h2>
         </div>
       </div>
